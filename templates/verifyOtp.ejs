@@ -1,0 +1,149 @@
+<!-- component -->
+<div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-12">
+    <div class="relative bg-white px-6 pt-10 pb-9 shadow-xl mx-auto w-full max-w-lg rounded-2xl">
+        <div class="mx-auto flex w-full max-w-md flex-col space-y-16">
+            <div class="flex flex-col items-center justify-center text-center space-y-2">
+                <div class="font-semibold text-3xl">
+                    <p>OTP Verification</p>
+                </div>
+                <div class="flex flex-row text-sm font-medium text-gray-400">
+                    <%if(verificationType=='number' ){%>
+                        <p>
+                            We have sent a code to your phone number <%=numberArr%>
+                        </p>
+                        <%}else{%>
+                            <p>
+                                We have sent a code to your email <%=emailArr%>
+                            </p>
+                            <%}%>
+                </div>
+            </div>
+            <div>
+                <form action="/api/v1/auth/verify-otp" method="post">
+                    <div class="flex flex-col space-y-16">
+                        <div id="otp" class="flex flex-row items-center justify-between mx-auto w-full max-w-xs">
+                            <div class="w-16 h-16 ">
+                                <input max="9"
+                                    class="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-300 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
+                                    type="number" name="first" id="first" required autocomplete="off">
+                            </div>
+                            <div class="w-16 h-16 ">
+                                <input max="9"
+                                    class="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-300 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
+                                    type="number" name="second" id="second" required autocomplete="off">
+                            </div>
+                            <div class="w-16 h-16 ">
+                                <input max="9"
+                                    class="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-300 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
+                                    type="number" name="third" id="third" required autocomplete="off">
+                            </div>
+                            <div class="w-16 h-16 ">
+                                <input max="9"
+                                    class="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-300 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
+                                    type="number" name="fourth" id="fourth" required autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="flex flex-col space-y-5">
+                            <div>
+                                <input type="submit" id="submitBtn" value="Verify OTP"
+                                    class="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-blue-700 border-none text-white text-sm shadow-sm focus:outline-blue-800 hover:bg-blue-800">
+                            </div>
+
+
+                        </div>
+                    </div>
+                </form>
+                <form action="/api/v1/auth/forgot" method="post" id="resendForm">
+                    <div
+                        class=" mt-5 flex flex-row items-center justify-center text-center text-sm font-medium space-x-1 text-gray-500">
+                        <%if(verificationType=='number' ){%>
+                            <input type="hidden" name="phone_number" value="<%=phone_number%>">
+                            <%}else{%>
+                                <input type="hidden" name="email" value="<%=email%>">
+                                <%}%>
+                                    <input type="hidden" name="resend" value="true">
+                                    <p>Didn't recieve code?</p> <input id="resendBtn" type="submit"
+                                        class="flex flex-row items-center text-blue-700 hover:text-blue-800 disabled:text-blue-400 cursor-pointer "
+                                        rel="noopener noreferrer" value="Resend">
+                                    <p
+                                        class=" invisible flex justify-between items-center text-blue-700  min-w-[2.7rem] h-4 timer ">
+                                        in
+                                        <span class="counter">1:00</span>
+                                    </p>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="self hidden" id="<%=resend%>"></div>
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        let resendBtn = document.getElementById('resendBtn');
+        let submitBtn = document.getElementById('submitBtn');
+        let resendForm = document.getElementById('resendForm');
+        let timer = document.querySelector('.timer');
+        let counter = document.querySelector('.counter');
+        let iterate = 60;
+        let resend = document.querySelector('.self').id;
+        //Resend button logic
+        if (resend == 'true') {
+            resend = true;
+        } else if (resend == 'false') {
+            resend = false;
+        } else {
+
+        }
+
+        if (resend) {
+            timer.classList.remove('invisible');
+            resendBtn.setAttribute('disabled', 'disable');
+            resendBtn.style.cursor = 'default';
+            setInterval(() => {
+                if (iterate > 1) {
+                    iterate--;
+                    if (iterate < 10) {
+                        counter.innerText = `0:0${iterate}`;
+                    } else {
+                        counter.innerText = `0:${iterate}`;
+                    }
+                } else {
+                    clearInterval(1);
+                    resendBtn.removeAttribute('disabled');
+                    resendBtn.style.cursor = 'pointer';
+                    timer.innerText = '';
+                }
+            }, 1000);
+        }
+        function OTPInput() {
+            const inputs = document.querySelectorAll('#otp >div> *[id]');
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener('input', (e) => {
+                    if (i !== inputs.length - 1) {
+                        if (e.data !== null) {
+                            inputs[i + 1].focus();
+                        }
+                    }
+                    if (inputs[i].value < 10) {
+                        inputs[i].value = e.data;
+                    }
+                    if (inputs[i].value > 9) {
+                        inputs[i].value = e.data;
+                    }
+                });
+                inputs[i].addEventListener('keydown', (e) => {
+                    if (e.keyCode == 8) {
+                        if (i !== 0) {
+                            if (!e.target.value) {
+                                e.target.value = '';
+                                inputs[i - 1].focus();
+                            }
+                        }
+                    }
+                });
+            }
+        } OTPInput();
+    });
+</script>

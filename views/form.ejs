@@ -1,0 +1,19 @@
+<%if(formType=='login' ){%>
+    <%- include('../templates/login.ejs')%>
+        <%}else if(formType=='signUp' ){%>
+            <%- include('../templates/signUp.ejs')%>
+                <%}else if(formType=='recoveryEmail' ){%>
+                    <%- include('../templates/recoveryEmail.ejs')%>
+                        <%}else if(formType=='verifyOtp' ){%>
+                            <%- include('../templates/verifyOtp.ejs')%>
+                                <%}else if (formType=='forgot' ){%>
+                                    <%- include('../templates/forgot.ejs')%>
+                                        <%}else if(formType=='createPassword' ){%>
+                                            <%- include('../templates/createPassword.ejs')%>
+                                                <%}else if(formType=='verifyNumber' ){%>
+                                                    <%- include('../templates/verifyNumber.ejs')%>
+                                                        <%}else if(formType=='verifyEmail' ){%>
+                                                            <%- include('../templates/verifyEmail.ejs')%>
+                                                                <%}else if(formType=='navbar' ){%>
+                                                                    <%- include('../templates/navbar.ejs')%>
+                                                                        <%}%>

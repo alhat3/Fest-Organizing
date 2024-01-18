@@ -1,0 +1,484 @@
+<%- include('../templates/navbar.ejs')%>
+    <%- include('../templates/shoppingCartPanel.ejs')%>
+        <div id="carouselExampleControls" class="relative mt-16" data-te-carousel-init data-te-carousel-slide>
+            <div class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+                <div class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                    data-te-carousel-item data-te-carousel-active>
+                    <div class="block w-full image-one"></div>
+                </div>
+                <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                    data-te-carousel-item>
+                    <div class="block w-full image-two"></div>
+                </div>
+                <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                    data-te-carousel-item>
+                    <div class="block w-full image-three"></div>
+                </div>
+            </div>
+            <button
+                class="absolute top-0 bottom-0 left-0 z-[1] flex w-[15%] items-center justify-center h-[18rem] border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+                type="button" data-te-target="#carouselExampleControls" data-te-slide="prev">
+                <span class="inline-block h-8 w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="h-6 w-6" style="filter: invert(1)">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                </span>
+                <span
+                    class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Previous</span>
+            </button>
+            <button
+                class="absolute top-0 bottom-0 right-0 z-[1] flex w-[15%] items-center justify-center h-[18rem] border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+                type="button" data-te-target="#carouselExampleControls" data-te-slide="next">
+                <span class="inline-block h-8 w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="h-6 w-6" style="filter: invert(1)">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </span>
+                <span
+                    class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Next</span>
+            </button>
+        </div>
+        <!-- Divider -->
+
+        <!-- <div id="carouselExampleControls" class="carousel slide relative mt-16" data-bs-ride="carousel">
+            <div class="carousel-inner relative w-full overflow-hidden -z-10">
+                <div class="carousel-item active relative float-left w-full">
+                    <img src="../static/img/accessories.jpg" class="block  image-one" alt="Accessories">
+                </div>
+                <div class="carousel-item relative float-left w-full">
+                    <img src="../static/img/headphone.jpg" class="block  image-two" alt="Accessories">
+                </div>
+                <div class="carousel-item relative float-left w-full">
+                    <img src="../static/img/milton.jpg" class="block  image-three" alt="Accessories">
+                </div>
+            </div>
+            <button
+                class="carousel-controls w-[5vw] h-[15vw] carousel-control-prev absolute top-0 bottom-0 flex items-center active:border-white justify-center p-0 text-center  hover:outline-none hover:no-underline border-none hover:border-solid hover:bg-opacity-30  hover:bg-gray-500 hover: focus:outline-none focus:no-underline left-0"
+                type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"
+                    style="filter: invert(1);"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+                class="carousel-controls w-[5vw] h-[15vw] carousel-control-next absolute top-0 bottom-0 flex items-center active:border-white justify-center p-0 text-center  hover:outline-none hover:no-underline border-none hover:border-solid hover:bg-opacity-30  hover:bg-gray-500 hover: focus:outline-none focus:no-underline right-0"
+                type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"
+                    style="filter: invert(1);"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div> -->
+        <div class="main overflow-x-hidden">
+            <section class="category  ">
+                <!--
+      This example requires some changes to your config:
+      
+      ```
+      // tailwind.config.js
+      module.exports = {
+        // ...
+        plugins: [
+          // ...
+          require('@tailwindcss/aspect-ratio'),
+        ],
+      }
+      ```
+    -->
+                <div class="bg-transparent w-screen ">
+                    <div class="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
+                        <div class="mx-auto max-w-none">
+                            <!-- <h2 class="text-2xl font-bold text-gray-900">Collections</h2> -->
+
+                            <div class="mt-6   grid grid-cols-4 gap-x-[4.5rem]  space-y-0">
+                                <div class="group relative eventBox" id="sportsBox">
+                                    <div
+                                        class="relative h-80 w-full overflow-hidden rounded-lg bg-white lg:aspect-w-1 lg:aspect-h-1">
+                                        <img src="../static/img/sports1.jpg" alt=" Desk with leather desk pad, walnut desk organizer, wireless keyboard
+                                            and mouse, and porcelain mug."
+                                            class="h-full w-full object-cover object-center">
+                                    </div>
+                                    <h3 class="mt-[1vw] text-sm text-black">
+                                        <p href="/api/v1/product-overview/1">
+                                            <span class="absolute inset-0"></span>
+                                            Football,Cricket,Chess, etc
+                                        </p>
+                                    </h3>
+                                    <p class="text-base font-semibold text-gray-900">Sports</p>
+                                </div>
+                                <div class="group relative eventBox" id="artsBox">
+                                    <div
+                                        class="relative h-80 w-full overflow-hidden rounded-lg bg-white lg:aspect-w-1 lg:aspect-h-1">
+                                        <img src="../static/img/hackathon.jpg"
+                                            alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
+                                            class="h-full w-full object-cover object-center">
+                                    </div>
+                                    <h3 class="mt-[1vw] text-sm text-black">
+                                        <p>
+                                            <span class="absolute inset-0"></span>
+                                            Cyber Security, Open source,University etc
+                                        </p>
+                                    </h3>
+                                    <p class="text-base font-semibold text-gray-900">Hackathon</p>
+                                </div>
+
+                                <div class="group relative eventBox" id="talentHuntBox">
+                                    <div
+                                        class="relative h-80 w-full overflow-hidden rounded-lg bg-white   lg:aspect-w-1 lg:aspect-h-1">
+                                        <img src="../static/img/talenthunt.jpg"
+                                            alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant."
+                                            class="h-full w-full object-cover object-center">
+                                    </div>
+                                    <h3 class="mt-[1vw] text-sm text-black">
+                                        <p href="/api/v1/product-overview/1">
+                                            <span class="absolute inset-0"></span>
+                                            Dance, Singing, Acting etc
+                                        </p>
+                                    </h3>
+                                    <p class="text-base font-semibold text-gray-900">Talent Hunt</p>
+                                </div>
+
+                                <div class="group relative eventBox" id="hackathonBox">
+                                    <div
+                                        class="relative h-80 w-full overflow-hidden rounded-lg bg-white   lg:aspect-w-1 lg:aspect-h-1">
+                                        <img src="../static/img/arts.jpg"
+                                            alt="Collection of four insulated travel bottles on wooden shelf."
+                                            class="h-full w-full object-cover object-center">
+                                    </div>
+                                    <h3 class="mt-[1vw] text-sm text-gray-500">
+                                        <p href="/api/v1/product-overview/1">
+                                            <span class="absolute inset-0"></span>
+                                            Music,Painting,Rangoli etc
+                                        </p>
+                                    </h3>
+                                    <p class="text-base font-semibold text-gray-900">Arts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <section class="cards  first-cards bg-gray-200" id="sportsRow">
+                <!-- component -->
+                <div class="flex flex-col  m-auto p-auto">
+                    <h1 class="flex py-2  ml-4 font-bold text-2xl text-gray-800">
+                        Arts
+                    </h1>
+                    <div class="flex overflow-x-scroll hide-scroll-bar">
+                        <div
+                            class="all-cards flex flex-nowrap overflow-x-scroll mx-2 h-[18rem] w-[100%] <%=freshDeals.length>4? '':'justify-evenly'%>">
+                            <!-- <%freshDeals.forEach((product,i)=>{%>
+                                <%if(i<16){%>
+                                    <%if(i===0){%>
+                                        <a href="/api/v1/product/<%=product.id%>" target="_blank"
+                                            rel="noreferer noopener" class="inline-block pr-3">
+                                            <div
+                                                class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                <img src="./static/img/product-img/<%=product.images[0].url%>"
+                                                    alt="<%=product.images[0].name%>"
+                                                    class="h-full w-full object-cover object-center">
+                                            </div>
+                                        </a>
+                                        <%}else{%>
+                                            <a href="/api/v1/product/<%=product.id%>" target="_blank"
+                                                rel="noreferer noopener" class="inline-block px-3">
+                                                <div
+                                                    class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                    <img src="./static/img/product-img/<%=product.images[0].url%>"
+                                                        alt="<%=product.images[0].name%>"
+                                                        class="h-full w-full object-cover object-center">
+                                                </div>
+                                            </a>
+                                            <%}%>
+                                                <%}%>
+                                                    <%})%> -->
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div>     
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cards  first-cards bg-gray-200" id="talentHuntRow">
+                <!-- component -->
+                <div class="flex flex-col  m-auto p-auto">
+                    <h1 class="flex py-2  ml-4 font-bold text-2xl text-gray-800">
+                        Talent Hunt
+                    </h1>
+                    <div class="flex overflow-x-scroll hide-scroll-bar">
+                        <div
+                            class="all-cards flex flex-nowrap overflow-x-scroll mx-2 h-[18rem] w-[100%] <%=electronicProducts.length>4? '':'justify-evenly'%>">
+                            <!-- <%electronicProducts.forEach((product,i)=>{%>
+                                <%if(i<16){%>
+                                    <%if(i===0){%>
+                                        <a href="/api/v1/product/<%=product.id%>" target="_blank"
+                                            rel="noreferer noopener" class="inline-block pr-3">
+                                            <div
+                                                class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                <img src="./static/img/product-img/<%=product.images[0].url%>"
+                                                    alt="<%=product.images[0].name%>"
+                                                    class="h-full w-full object-cover object-center">
+                                            </div>
+                                        </a>
+                                        <%}else{%>
+                                            <a href="/api/v1/product/<%=product.id%>" target="_blank"
+                                                rel="noreferer noopener" class="inline-block px-3">
+                                                <div
+                                                    class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                    <img src="./static/img/product-img/<%=product.images[0].url%>"
+                                                        alt="<%=product.images[0].name%>"
+                                                        class="h-full w-full object-cover object-center">
+                                                </div>
+                                            </a>
+                                            <%}%>
+                                                <%}%>
+                                                    <%})%> -->
+
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div>     
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="artsRow" class="cards  first-cards bg-gray-200">
+                <!-- component -->
+                <div class="flex flex-col  m-auto p-auto">
+                    <h1 class="flex py-2  ml-4 font-bold text-2xl text-gray-800">
+                        Hackathon
+                    </h1>
+                    <div class="flex overflow-x-scroll hide-scroll-bar">
+                        <div
+                            class="all-cards flex flex-nowrap overflow-x-scroll mx-2 h-[18rem] w-[100%] <%=fashionProducts.length>4? '':'justify-evenly'%>">
+                            <!-- <%fashionProducts.forEach((product,i)=>{%>
+                                <%if(i<16){%>
+                                    <%if(i===0){%>
+                                        <a href="/api/v1/product/<%=product.id%>" target="_blank"
+                                            rel="noreferer noopener" class="inline-block pr-3">
+                                            <div
+                                                class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                <img src="./static/img/product-img/<%=product.images[0].url%>"
+                                                    alt="<%=product.images[0].name%>"
+                                                    class="h-full w-full object-cover object-center">
+                                            </div>
+                                        </a>
+                                        <%}else{%>
+                                            <a href="/api/v1/product/<%=product.id%>" target="_blank"
+                                                rel="noreferer noopener" class="inline-block px-3">
+                                                <div
+                                                    class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                    <img src="./static/img/product-img/<%=product.images[0].url%>"
+                                                        alt="<%=product.images[0].name%>"
+                                                        class="h-full w-full object-cover object-center">
+                                                </div>
+                                            </a>
+                                            <%}%>
+                                                <%}%>
+                                                    <%})%> -->
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div>     
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="cards  first-cards bg-gray-200" id="hackathonRow">
+                <!-- component -->
+                <div class="flex flex-col  m-auto p-auto">
+                    <h1 class="flex py-2  ml-4 font-bold text-2xl text-gray-800">
+                        Sports
+                    </h1>
+                    <div class="flex overflow-x-scroll hide-scroll-bar">
+                        <div
+                            class="all-cards flex flex-nowrap overflow-x-scroll mx-2 h-[18rem] w-[100%] <%=electronicProducts.length>4? '':'justify-evenly'%>">
+                            <!-- <%electronicProducts.forEach((product,i)=>{%> -->
+                                <!-- <%if(i<16){%>
+                                    <%if(i===0){%>
+                                        <a href="/api/v1/product/<%=product.id%>" target="_blank"
+                                            rel="noreferer noopener" class="inline-block pr-3">
+                                            <div
+                                                class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                <img src="./static/img/product-img/<%=product.images[0].url%>"
+                                                    alt="<%=product.images[0].name%>"
+                                                    class="h-full w-full object-cover object-center">
+                                            </div>
+                                        </a>
+                                        <%}else{%>
+                                            <a href="/api/v1/product/<%=product.id%>" target="_blank"
+                                                rel="noreferer noopener" class="inline-block px-3">
+                                                <div
+                                                    class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                    <img src="./static/img/product-img/<%=product.images[0].url%>"
+                                                        alt="<%=product.images[0].name%>"
+                                                        class="h-full w-full object-cover object-center">
+                                                </div>
+                                            </a>
+                                            <%}%>
+                                                <%}%>
+                                                    <%})%> -->
+
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div>     
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="inline-block px-3">
+                                                        <div
+                                                            class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                            <img src="../static/img/cricket-logo.avif"
+                                                            
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+                                                    </div> 
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- footer -->
+            <%- include('../templates/footer.ejs')%>
+
+        </div>

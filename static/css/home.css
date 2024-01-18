@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.eventBox:hover {
+    cursor: pointer;
+
+}
+
+body {
+    /* background: linear-gradient(#eaeded 40%, #b6b7b7); */
+}
+
+.image-one {
+    /* background: linear-gradient(transparent 50px, white),
+        url("../img/Slider1.jpg"); */
+    background-image: url("../img/Slider1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 42.5rem;
+    width: 100vw;
+}
+
+.image-two {
+    /* background: linear-gradient(transparent 50px, white),
+        url("../img/Slider2.jpg"); */
+    background-image: url("../img/Slider2.jpg");
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 42.5rem;
+    width: 100vw;
+}
+
+.image-three {
+    /* background: linear-gradient(transparent 50px, white),
+        url("../img/Slider3.jpg"); */
+    background-image: url("../img/Slider3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 42.5rem;
+    width: 100vw;
+}
+
+.main {
+    position: absolute;
+    width: 98.9vw;
+    top: 20.7vw;
+    /* left: 2.5vw; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(transparent, #eaeded 40%, #b6b7b7);
+    /* background-color: black; */
+    /* */
+}
+
+.cards {
+    /* max-width: 86rem; */
+    border-radius: .4vw;
+    background-color: white;
+    padding-bottom: 1rem;
+    width: 86rem;
+}
+
+.first-cards {
+    margin-top: 5rem;
+}
+
+section.first-cards~section {
+    margin-top: 1rem;
+}
+
+.group {
+    height: 21vw;
+    /* width: 19vw; */
+}
+
+.group>div {
+    height: 21vw;
+    width: 19vw;
+}
+
+.group>div>img {
+    height: 21vw;
+    width: 19vw;
+}
+
+
+.all-cards::-webkit-scrollbar {
+    background-color: transparent;
+    height: .6vw;
+}
+
+.all-cards::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+
+}
+
+.all-cards:hover::-webkit-scrollbar-thumb {
+    background-color: rgb(206, 203, 203);
+}
+
+.all-cards>div>div {
+    cursor: pointer;
+    /* padding-top: 10vw; */
+}
+
+.hide-scroll-bar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.hide-scroll-bar::-webkit-scrollbar {
+    display: none;
+}
