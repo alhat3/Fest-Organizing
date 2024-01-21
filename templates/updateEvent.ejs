@@ -1,0 +1,173 @@
+<div id="last-users">
+    <h1 class="font-bold py-7 uppercase text-center text-[20px] ">Create Event </h1>
+    <div class="bg-black w-[60%] m-auto min-h-[45rem] mb-8  flex justify-center items-center">
+        <form action="/api/v1/manager/event/update-event/<%=event.id%>"
+            class=" min-h-[40rem] w-[28rem] flex  items-center flex-col" method="post" enctype="multipart/form-data">
+            <div class="eventInputs">
+                <label for="event_name">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="black" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                    </svg>
+                </label>
+                <input type="text" class="" value="<%=event.name%>" name="event_name" id="event_name"
+                    placeholder="Event Name" required>
+
+            </div>
+            <div class="eventInputs">
+                <label for="event_price">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="black" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15 8.25H9m6 3H9m3 6l-3-3h1.5a3 3 0 100-6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+
+                </label>
+                <input type="number" class="" value="<%=event.price%>" name="event_price" id="event_price"
+                    placeholder="Price" required>
+
+            </div>
+            <div class="eventInputs">
+                <label for="event_description">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="black" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                    </svg>
+
+                </label>
+                <textarea name="event_description" id="event_description" placeholder="Event Description"
+                    required><%=event.description%></textarea>
+
+            </div>
+            <div class=" eventInputs">
+                <label for="more_info">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="black" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                    </svg>
+
+                </label>
+                <!-- <input type="text" class="" name="more_info" id="more_info" placeholder="More Info (Optional)"> -->
+                <select name="more_info" id="more_info">
+                    <option value="More Info (Optional)">More Info (Optional)</option>
+                    <%if(!event.moreInfo?.about_event){%>
+                        <option id="aboutOpt" value="About Event">About Event</option>
+                        <%}%>
+                            <%if(!event.moreInfo?.specifications){%>
+                                <option id="specificationsOpt" value="Specifications">Specifications</option>
+                                <%}%>
+
+                </select>
+
+            </div>
+            <%if(event.moreInfo?.about_event){%>
+                <div class="eventInputs createdTextarea ">
+                    <textarea name="about_event" id="about_event "
+                        placeholder="Write about this event (Optional)"><%=event.moreInfo.about_event%></textarea>
+                </div>
+                <%}%>
+                    <%if(event.moreInfo?.specifications){%>
+                        <div class="eventInputs createdTextarea">
+                            <textarea name="specifications" id="specifications"
+                                placeholder="Specifications of the event (Optional)"><%=event.moreInfo.specifications%></textarea>
+                        </div>
+                        <%}%>
+                            <div class="eventInputs categoryInput">
+                                <label for="event_category">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="black" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
+                                    </svg>
+                                </label>
+                                <!-- <input type="text" class="" name="event_category" id="event_category" placeholder="Choose Category"> -->
+                                <select name="event_category" id="event_category" required style="color: black;">
+                                    <option value="Choose Category">Choose Category</option>
+                                    <option value="Fashion" <%=event.category==='Fashion' ? 'selected' :'' %>
+                                        >Fashion
+                                    </option>
+                                    <option value="Electronics" <%=event.category==='Electronics' ? 'selected' :'' %>
+                                        >Electronics
+                                    </option>
+                                    <option value="Food and beverages" <%=event.category==='Food and beverages'
+                                        ? 'selected' :'' %>>Food and beverages</option>
+                                    <option value="Sports" <%=event.category==='Sports' ? 'selected' :'' %>>Sports
+                                    </option>
+                                    <option value="Health and Wellness" <%=event.category==='Health and Wellness'
+                                        ? 'selected' :'' %>>Health and Wellness</option>
+                                    <option value="Children's Goods" <%=event.category==="Children's Goods" ? 'selected'
+                                        :'' %>
+                                        >Children's Goods</option>
+                                    <option value="Others" <%=event.category==='Others' ? 'selected' :'' %>>Others
+                                    </option>
+                                </select>
+
+                            </div>
+
+                            <div class="eventInputs ">
+                                <label for="event_stock">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"
+                                        stroke-width="2" stroke="black" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                                    </svg>
+                                </label>
+                                <input type="number" class="" value="<%=event.stock%>" name="event_stock" value="1"
+                                    id="event_stock" placeholder="Stock (Maximum-9999)" required>
+                            </div>
+                            <div class="eventInputs fileInput">
+                                <label for="event_image" class="cursor-pointer">Choose Files (Maximum-5)</label>
+                                <input type="file" class="" accept=".jpg,.jpeg,.png,.webp" multiple name="event_image"
+                                    id="event_image">
+                            </div>
+                            <div class="eventInputs h-[7rem] imgViewer">
+                                <%if(event.images.length>0){%>
+                                    <%event.images.forEach((img)=>{%>
+                                        <div>
+                                            <img src="../../static/img/event-img/<%=img.url%>" alt="<%=img.name%>">
+                                        </div>
+                                        <%})%>
+                                            <%}%>
+                            </div>
+                            <div class="submitDiv">
+                                <!-- <input type="button" id="cancel" value="Cancel"> -->
+                                <a id="cancel" href="/api/v1/manager/manage-event">Cancel</a>
+                                <input type="submit" class="" id="update_event" value="Save">
+                            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    let fileBtn = document.getElementById('event_image');
+    let url;
+    var files = fileBtn.files;
+    let dataTransfer = new DataTransfer();
+
+    // var imageUrl = '../../static/img/event-img/63f37e4fdd9dfbeca2e13954-iphone.jpg';
+    // An array of image URLs to fetch
+    var imageObj = {
+        imageUrls: [],
+        imageName: [],
+        imageType: []
+    };
+<% event.images.forEach((img) => {%>
+        imageObj.imageUrls.push('../../static/img/event-img/<%=img.url%>');
+        imageObj.imageName.push('<%=img.name%>');
+        imageObj.imageType.push('<%=img.mimetype%>')
+            <%}) %>
+        // Fetch each image and create a File object for it
+        Promise.all(imageObj.imageUrls.map((url, i) => {
+            return fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    var file = new File([blob], `${imageObj.imageName[i]}`, { type: `${imageObj.imageType[i]}`, lastModified: new Date().getTime() });
+                    dataTransfer.items.add(file);
+                });
+        })).then(() => {
+            fileBtn.files = dataTransfer.files;
+        });
+</script>

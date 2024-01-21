@@ -7,6 +7,7 @@ const sendEmail = require('../utils/sendEmail');
 const jwt = require('jsonwebtoken');
 exports.login = catchAsyncErrors(async (req, res, next) => {
     const { email, password, remember } = req.body;
+    console.log(email, password, remember);
     if (email) {
         const user = await userModel.findOne({ email }).select('+password');
         // console.log(user);

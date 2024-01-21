@@ -1,0 +1,25 @@
+<%if(role==='manager' ){%>
+    <div class="antialiased  bg-[color:var(--bg-black)] w-full  min-h-screen text-slate-300 relative py-4">
+        <div class="grid grid-cols-12 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
+            <%- include('../templates/managerDashboardNavbar.ejs')%>
+                <div id="content"
+                    class="bg-[var(--bg-white-10)] col-span-9 rounded-lg <%if(content !=='createEvent'){%>p-6<%  }%>">
+                    <%if(content==='dashboard'){%>
+                        <%- include('../templates/managerDashboard.ejs')%>
+                            <%}else if(content==='orders' ){%>
+                                <%- include('../templates/managerOrders.ejs')%>
+                                    <%}else if(content==='createEvent' ){%>
+                                        <%- include('../templates/createEvent.ejs')%>
+                                            <%}else if(content==='manageEvent' ){%>
+                                                <%- include('../templates/eventManagement.ejs')%>
+                                                    <%}else if(content==='updateEvent' ){%>
+                                                        <%- include('../templates/updateEvent.ejs')%>
+                                                            <%}else if(content==='eventReviews' ){%>
+                                                                <%- include('../templates/managerReviews.ejs')%>
+                                                                    <%}%>
+                </div>
+        </div>
+    </div>
+    <%}else if(role==='admin' ){%>
+
+        <%}%>

@@ -1,0 +1,199 @@
+.eventInputs {
+    margin-bottom: 1rem;
+    height: 3.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.eventInputs label {
+    border-radius: 10px 0 0 10px;
+
+    height: inherit;
+    width: 15%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.eventInputs textarea {
+    border-radius: 0 10px 10px 0;
+    text-align: left;
+    color: black;
+    font-size: 1.1rem;
+    width: 75%;
+    /* min-height: 45%; */
+    padding-top: .5rem;
+    height: fit-content;
+    max-height: 70%;
+    border: none;
+    overflow-y: hidden;
+    /* overflow-x: scroll; */
+    resize: none;
+}
+
+.createdTextarea {
+    height: 8rem;
+    display: block;
+}
+
+.createdTextarea textarea {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    max-height: none;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.eventInputs input {
+
+    border-radius: 0 10px 10px 0;
+    font-size: 1.1rem;
+    color: black;
+    height: inherit;
+    width: 75%;
+    border: none;
+}
+
+.eventInputs select {
+    border-radius: 0 10px 10px 0;
+    font-size: 1.1rem;
+    color: black;
+    height: inherit;
+    width: 85%;
+    border: none;
+    color: #7c8187;
+    cursor: pointer;
+}
+
+.eventInputs select option {
+    /* background-color: red; */
+    color: black;
+    font-size: 1.1rem;
+}
+
+.eventInputs select option:nth-child(1) {
+    color: #7c8187;
+}
+
+.eventInputs input[type=file] {
+    display: none;
+}
+
+
+
+.fileInput label {
+    height: inherit;
+    width: 100%;
+    color: black;
+    font-size: 1.1rem;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* display: none; */
+    transition: all .1s linear;
+}
+
+.imgViewer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.imgViewer div {
+    width: 4rem;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgViewer div img {
+    height: inherit;
+    width: inherit;
+    object-fit: contain;
+
+}
+
+.fileInput label:hover {
+    color: #989faa;
+}
+
+.eventInputs input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.eventInputs select:focus {
+    outline: none;
+
+    box-shadow: none;
+
+}
+
+.eventInputs textarea:focus {
+    box-shadow: none;
+
+    outline: none;
+}
+
+.eventInputs label svg {
+    cursor: pointer;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.eventInputs input::-webkit-outer-spin-button,
+.eventInputs input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.eventInputs input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+.eventInputs input[type=submit] {
+    width: 100%;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.submitDiv {
+    margin-top: 1rem;
+    height: 3rem;
+    width: 60%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.submitDiv input {
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: black;
+    height: inherit;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(129, 140, 248);
+    transition: all .1s linear;
+}
+
+.submitDiv input:hover {
+    color: white;
+    background-color: rgb(68, 87, 255);
+}

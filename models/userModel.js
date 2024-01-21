@@ -45,6 +45,24 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: undefined
     },
+    notifications: {
+        orders: {
+            type: Number,
+            default: 0
+        },
+        products: {
+            type: String,
+            default: 0
+        },
+        reviews: {
+            type: Number,
+            default: 0
+        }
+    },
+    totalIncome: {
+        type: Number,
+        default: 0
+    }
 
 });
 userSchema.pre('save', async function (next) {

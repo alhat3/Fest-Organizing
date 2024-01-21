@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+
+    <!-- <link rel="stylesheet" href="../../static/css/style.css"> -->
+    <!-- Tailwind elements library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <!-- Required chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <%if(role==='manager' ){%>
+        <%if(content==='createEvent' ){%>
+            <link rel="stylesheet" href="../../static/css/createEvent.css">
+            <style>
+                .createEvent {
+                    /* color: #5C6BC0; */
+                    background-color: rgb(255 255 255 / 0.1);
+                }
+            </style>
+            <%}%>
+                <%if(content=== 'updateEvent' ){%>
+                    <link rel="stylesheet" href="../../static/css/updateEvent.css">
+
+                    <style>
+                        .manageEvent {
+                            /* color: #5C6BC0; */
+                            background-color: rgb(255 255 255 / 0.1);
+                        }
+                    </style>
+                    <%}%>
+                        <%if(content==='manageEvent'){%>
+                            <style>
+                                .manageEvent {
+                                    /* color: #5C6BC0; */
+                                    background-color: rgb(255 255 255 / 0.1);
+                                }
+                            </style>
+                            <link rel="stylesheet" href="../static/css/manageEvent.css">
+                            <%}else if(content==='dashboard' ){%>
+                                <style>
+                                    .dashboard {
+                                        /* color: #5C6BC0; */
+                                        background-color: rgb(255 255 255 / 0.1);
+                                    }
+                                </style>
+                                <%}else if(content==='orders' ){%>
+                                    <style>
+                                        .manageOrder {
+                                            /* color: #5C6BC0; */
+                                            background-color: rgb(255 255 255 / 0.1);
+                                        }
+                                    </style>
+                                    <%}else if(content==='eventReviews' ){%>
+                                        <link rel="stylesheet" href="../static/css/managerReviews.css">
+                                        <style>
+                                            .eventReviews {
+                                                /* color: #5C6BC0; */
+                                                background-color: rgb(255 255 255 / 0.1);
+                                            }
+                                        </style>
+                                        <%}%>
+                                            <link rel="stylesheet" href="../static/css/managerDashboard.css">
+                                            <link rel="preconnect" href="https://rsms.me/">
+                                            <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+                                            <style>
+                                                :root {
+                                                    --bg-black: #000000;
+                                                    /* --black-60: rgb(0 0 0 / 0.6); */
+                                                    --black-60: rgba(0, 0, 0, 0.6);
+                                                    --bg-white-10: rgb(255 255 255 / 0.1);
+                                                    ;
+                                                    font-family: 'Inter', sans-serif;
+                                                }
+
+                                                @supports (font-variation-settings: normal) {
+                                                    :root {
+                                                        font-family: 'Inter var', sans-serif;
+                                                    }
+                                                }
+                                            </style>
+                                            <%}%>
+</head>
+
+<body>
+    <%-body%>
+</body>
+<%if(role==='manager' ){%>
+    <script src="../../static/script/managerNavbar.js"></script>
+    <%if(content==='dashboard' ){%>
+        <script src="../static/script/managerDashboard.js"></script>
+        <%}else if(content==='createEvent' ){%>
+            <script src="../../static/script/createEvent.js"></script>
+            <%}else if(content==='updateEvent' ){%>
+                <script src="../../static/script/updateEvent.js"></script>
+
+                <%}else if(content==='manageEvent' ){%>
+                    <script src="../static/script/manageEvent.js"></script>
+                    <%}else if(content==='eventReviews' ){%>
+                        <script src="../static/script/managerReviews.js"></script>
+                        <%}%>
+                            <%}%>
+
+</html>

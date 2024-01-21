@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+
+    <!-- <link rel="stylesheet" href="../../static/css/style.css"> -->
+    <!-- Tailwind elements library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" /> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script> -->
+    <link rel="stylesheet" href="../static/css/eventOverview.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+    <script src="../static/script/navbar.js" defer></script>
+    <script src="../static/script/eventOverview.js" defer></script>
+
+</head>
+
+<body>
+    <%- include('../templates/navbar.ejs')%>
+        <%- include('../templates/shoppingCartPanel.ejs')%>
+            <div class="main">
+                <main>
+                    <div class="bg-white">
+                        <div class="pt-6">
+                            <nav aria-label="Breadcrumb">
+                                <ol role="list"
+                                    class="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+                                    <li>
+                                        <div class="flex items-center">
+                                            <a href="/" class="mr-2 text-sm font-medium text-gray-900">Home</a>
+                                            <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor"
+                                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                                class="h-5 w-4 text-gray-300">
+                                                <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+                                            </svg>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="flex items-center">
+                                            <a href="#" class="mr-2 text-sm font-medium text-gray-900">
+                                                <%=event.category%>
+                                            </a>
+                                            <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor"
+                                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                                class="h-5 w-4 text-gray-300">
+                                                <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+                                            </svg>
+                                        </div>
+                                    </li>
+
+                                    <li class="text-sm">
+                                        <p href="#" aria-current="page"
+                                            class="h-5 w-[15rem] overflow-hidden whitespace-nowrap text-ellipsis font-medium text-gray-500 ">
+                                            <%=event.name%>
+                                        </p>
+                                    </li>
+                                </ol>
+                            </nav>
+
+                            <!-- Image gallery -->
+                            <%if(event.images.length>0){%>
+                                <div
+                                    class="mx-auto mt-6 max-w-2xl sm:px-6 lg:flex lg:gap-x-8  lg:max-w-7xl lg:justify-center lg:items-center lg:px-8 h-[30rem]">
+                                    <div class=" hidden overflow-hidden rounded-lg lg:block h-[100%]">
+                                        <img src="../static/img/event-img/<%=event.images[0].url%>"
+                                            alt="<%=event.images[0].name%>"
+                                            class="h-full w-full object-cover object-center">
+                                    </div>
+                                    <%if(event.images.length>2){%>
+                                        <div class=" lg:grid lg:grid-cols-1 lg:gap-y-8 h-[100%]">
+                                            <div class=" overflow-hidden rounded-lg">
+                                                <img src="../static/img/event-img/<%=event.images[2].url%>"
+                                                    alt="Model wearing plain black basic tee."
+                                                    class="h-full w-full object-cover object-center">
+                                            </div>
+                                            <%if(event.images.length>3){%>
+                                                <div class=" overflow-hidden rounded-lg">
+                                                    <img src="../static/img/event-img/<%=event.images[3].url%>"
+                                                        alt="Model wearing plain gray basic tee."
+                                                        class="h-full w-full object-cover object-center">
+                                                </div>
+                                                <%}%>
+                                        </div>
+                                        <%}%>
+                                            <%if(event.images.length>1){%>
+                                                <div class="sm:overflow-hidden sm:rounded-lg  h-[100%]">
+                                                    <img src="../static/img/event-img/<%=event.images[1].url%>"
+                                                        alt="Model wearing plain white basic tee."
+                                                        class="h-full w-full object-cover object-center">
+                                                </div>
+                                                <%}%>
+                                </div>
+                                <%}%>
+
+                                    <!-- Event info -->
+                                    <div
+                                        class="mx-auto max-w-2xl px-4 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-4 lg:px-8 lg:pt-16">
+                                        <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+                                            <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                                                <%=event.name%>
+                                            </h1>
+                                        </div>
+
+                                        <!-- Options -->
+                                        <div class="mt-4 lg:row-span-3 lg:mt-0">
+                                            <h2 class="sr-only">Event information</h2>
+                                            <p class="text-3xl tracking-tight text-gray-900">₹<%=event.price%>
+                                            </p>
+
+                                            <!-- Reviews -->
+                                            <div class="mt-6">
+                                                <h3 class="sr-only">Reviews</h3>
+                                                <div class="flex items-center">
+
+                                                    <p class="sr-only">4 out of 5 stars</p>
+                                                    <a href="#reviewSection"
+                                                        class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                                                        <%=event.reviews.length%>
+                                                            reviews
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <!-- Colors -->
+                                            <div>
+                                                <h3 class="text-sm font-medium text-gray-900">Color</h3>
+
+                                                <fieldset class="mt-4">
+                                                    <legend class="sr-only">Choose a color</legend>
+                                                    <div class="flex items-center space-x-3">
+                                                        <!--
+            Active and Checked: "ring ring-offset-1"
+            Not Active and Checked: "ring-2"
+          -->
+                                                        <label
+                                                            class="color-choice -m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer ring ring-offset-1 focus:outline-none ring-gray-400">
+                                                            <input type="radio" name="color-choice" value="White"
+                                                                class="sr-only" aria-labelledby="color-choice-0-label">
+                                                            <span id="color-choice-0-label" class="sr-only"> White
+                                                            </span>
+                                                            <span aria-hidden="true"
+                                                                class="h-8 w-8 bg-white border border-black border-opacity-10 rounded-full"></span>
+                                                        </label>
+
+                                                        <!--
+            Active and Checked: "ring ring-offset-1"
+            Not Active and Checked: "ring-2"
+          -->
+                                                        <label
+                                                            class="color-choice -m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-gray-400">
+                                                            <input type="radio" name="color-choice" value="Gray"
+                                                                class="sr-only" aria-labelledby="color-choice-1-label">
+                                                            <span id="color-choice-1-label" class="sr-only"> Gray
+                                                            </span>
+                                                            <span aria-hidden="true"
+                                                                class="h-8 w-8 bg-gray-200 border border-black border-opacity-10 rounded-full"></span>
+                                                        </label>
+
+                                                        <!--
+            Active and Checked: "ring ring-offset-1"
+            Not Active and Checked: "ring-2"
+          -->
+                                                        <label
+                                                            class="color-choice -m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-gray-900">
+                                                            <input type="radio" name="color-choice" value="Black"
+                                                                class="sr-only" aria-labelledby="color-choice-2-label">
+                                                            <span id="color-choice-2-label" class="sr-only"> Black
+                                                            </span>
+                                                            <span aria-hidden="true"
+                                                                class="h-8 w-8 bg-gray-900 border border-black border-opacity-10 rounded-full"></span>
+                                                        </label>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+
+                                            <!-- Sizes -->
+                                            <div class="mt-10">
+                                                <div class="flex items-center justify-between">
+                                                    <h3 class="text-sm font-medium text-gray-900">Size</h3>
+                                                    <a href="#"
+                                                        class="text-sm font-medium text-indigo-600 hover:text-indigo-500">Size
+                                                        guide</a>
+                                                </div>
+
+                                                <fieldset class="mt-4">
+                                                    <legend class="sr-only">Choose a size</legend>
+                                                    <div class="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
+                                                        <!-- Active: "ring-2 ring-indigo-500" -->
+                                                        <label
+                                                            class="group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 bg-gray-50 text-gray-200 cursor-not-allowed">
+                                                            <input type="radio" name="size-choice" value="XXS" disabled
+                                                                class="sr-only" aria-labelledby="size-choice-0-label">
+                                                            <span id="size-choice-0-label">XXS</span>
+
+                                                            <span aria-hidden="true"
+                                                                class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200">
+                                                                <svg class="absolute inset-0 h-full w-full stroke-2 text-gray-200"
+                                                                    viewBox="0 0 100 100" preserveAspectRatio="none"
+                                                                    stroke="currentColor">
+                                                                    <line x1="0" y1="100" x2="100" y2="0"
+                                                                        vector-effect="non-scaling-stroke" />
+                                                                </svg>
+                                                            </span>
+                                                        </label>
+
+                                                        <!-- Active: "ring-2 ring-indigo-500" -->
+                                                        <label
+                                                            class="size-choice group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                                                            <input type="radio" name="size-choice" value="XS"
+                                                                class="sr-only" aria-labelledby="size-choice-1-label">
+                                                            <span id="size-choice-1-label">XS</span>
+
+                                                            <!--
+              Active: "border", Not Active: "border-2"
+              Checked: "border-indigo-500", Not Checked: "border-transparent"
+            -->
+                                                            <span
+                                                                class="size-span pointer-events-none absolute -inset-px rounded-md"
+                                                                aria-hidden="true"></span>
+                                                        </label>
+
+                                                        <!-- Active: "ring-2 ring-indigo-500" -->
+                                                        <label
+                                                            class="size-choice group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                                                            <input type="radio" name="size-choice" value="S"
+                                                                class="sr-only" aria-labelledby="size-choice-2-label">
+                                                            <span id="size-choice-2-label">S</span>
+
+                                                            <!--
+              Active: "border", Not Active: "border-2"
+              Checked: "border-indigo-500", Not Checked: "border-transparent"
+            -->
+                                                            <span
+                                                                class="size-span pointer-events-none absolute -inset-px rounded-md"
+                                                                aria-hidden="true"></span>
+                                                        </label>
+
+                                                        <!-- Active: "ring-2 ring-indigo-500" -->
+                                                        <label
+                                                            class="size-choice group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                                                            <input type="radio" name="size-choice" value="M"
+                                                                class="sr-only" aria-labelledby="size-choice-3-label">
+                                                            <span id="size-choice-3-label">M</span>
+
+                                                            <!--
+              Active: "border", Not Active: "border-2"
+              Checked: "border-indigo-500", Not Checked: "border-transparent"
+            -->
+                                                            <span
+                                                                class="size-span pointer-events-none absolute -inset-px rounded-md"
+                                                                aria-hidden="true"></span>
+                                                        </label>
+
+                                                        <!-- Active: "ring-2 ring-indigo-500" -->
+                                                        <label
+                                                            class="size-choice group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                                                            <input type="radio" name="size-choice" value="L"
+                                                                class="sr-only" aria-labelledby="size-choice-4-label">
+                                                            <span id="size-choice-4-label">L</span>
+
+                                                            <!--
+              Active: "border", Not Active: "border-2"
+              Checked: "border-indigo-500", Not Checked: "border-transparent"
+            -->
+                                                            <span
+                                                                class="size-span pointer-events-none absolute -inset-px rounded-md"
+                                                                aria-hidden="true"></span>
+                                                        </label>
+
+                                                        <!-- Active: "ring-2 ring-indigo-500" -->
+                                                        <label
+                                                            class="size-choice group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                                                            <input type="radio" name="size-choice" value="XL"
+                                                                class="sr-only" aria-labelledby="size-choice-5-label">
+                                                            <span id="size-choice-5-label">XL</span>
+
+                                                            <!--
+              Active: "border", Not Active: "border-2"
+              Checked: "border-indigo-500", Not Checked: "border-transparent"
+            -->
+                                                            <span
+                                                                class="size-span pointer-events-none absolute -inset-px rounded-md"
+                                                                aria-hidden="true"></span>
+                                                        </label>
+
+                                                        <!-- Active: "ring-2 ring-indigo-500" -->
+                                                        <label
+                                                            class="size-choice group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                                                            <input type="radio" name="size-choice" value="2XL"
+                                                                class="sr-only" aria-labelledby="size-choice-6-label">
+                                                            <span id="size-choice-6-label">2XL</span>
+
+                                                            <!--
+              Active: "border", Not Active: "border-2"
+              Checked: "border-indigo-500", Not Checked: "border-transparent"
+            -->
+                                                            <span
+                                                                class="size-span pointer-events-none absolute -inset-px rounded-md"
+                                                                aria-hidden="true"></span>
+                                                        </label>
+
+                                                        <!-- Active: "ring-2 ring-indigo-500" -->
+                                                        <label
+                                                            class=" size-choice group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                                                            <input type="radio" name="size-choice" value="3XL"
+                                                                class="sr-only" aria-labelledby="size-choice-7-label">
+                                                            <span id="size-choice-7-label">3XL</span>
+
+                                                            <!--
+              Active: "border", Not Active: "border-2"
+              Checked: "border-indigo-500", Not Checked: "border-transparent"
+            -->
+                                                            <span
+                                                                class=" size-span pointer-events-none absolute -inset-px rounded-md"
+                                                                aria-hidden="true"></span>
+                                                        </label>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                            <form action="/api/v1/order/<%=eventID%>/shipping" method="get">
+                                                <button type="submit"
+                                                    class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Register
+                                                    Now</button>
+                                            </form>
+                                            <form action="/api/v1/" method="post">
+                                                <button type="submit"
+                                                    class="mt-5 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                    Watchlist </button>
+                                            </form>
+                                        </div>
+
+                                        <div
+                                            class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">
+                                            <!-- Description and details -->
+                                            <div>
+                                                <h3 class="sr-only">Description</h3>
+
+                                                <div class="space-y-6">
+                                                    <p id="description" class="text-base text-gray-900 ">
+                                                        <!-- <%=event.description%> -->
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <%if(event.moreInfo){%>
+                                                <div class="mt-10">
+                                                    <h3 class="text-sm font-medium text-gray-900">Highlights</h3>
+
+                                                    <div class="mt-4">
+                                                        <%=event.moreInfo?.aboutEvent%>
+                                                    </div>
+                                                </div>
+                                                <%}%>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                    <section class="hidden features">
+                        <!-- <%- include('../templates/eventFeatures.ejs')%> -->
+                    </section>
+                    <section class="reviewSection" id="reviewSection">
+                        <!-- <%- include('../templates/reviews.ejs')%> -->
+                    </section>
+                </main>
+                <hr>
+                <%- include('../templates/footer2.ejs')%>
+            </div>
+
+</body>
+<script>
+    let description = document.getElementById('description');
+    let descriptionContent = `<%=event.description %>`;
+    if (descriptionContent) {
+        description.innerText = descriptionContent;
+    }
+</script>
+<script src="../static/script/shoppingCartPanel.js"></script>
+
+</html>

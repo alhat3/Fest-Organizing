@@ -2,20 +2,19 @@ const express = require('express');
 const port = 5000 || process.env.PORT;
 const hostname = '127.0.0.1';
 //Hnadling Uncaught Execption
-process.on('uncaughtException', err => {
-    console.log(`Error: ${err.message}`);
-    console.log('Shutting down the server due to Uncaught Exception');
-    process.exit(1);
-});
+// process.on('uncaughtException', err => {
+//     console.log(`Error: ${err.message}`);
+//     console.log('Shutting down the server due to Uncaught Exception');
+//     process.exit(1);
+// });
 const connectDB = require('./db/connect');
-
+const catchAsyncErrors = require('./middleware/catchAsyncErrors');
 const expressEjsLayouts = require('express-ejs-layouts');
 const errorMiddleware = require('./middleware/error');
 const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
 const cookieParser = require('cookie-parser');
-const catchAsyncError = require('./middleware/catchAsyncErrors');
 app.set('view engine', 'ejs');
 app.set('layout', './layouts/layout.ejs');
 app.set('views', 'views');
@@ -27,23 +26,41 @@ mongoose.set('strictQuery', true);
 mongoose.set('strictPopulate', false);
 app.use('/static', express.static('static'));
 app.use('/api/v1/static', express.static('static'));
-app.use('/api/v1/seller/static', express.static('static'));
+app.use('/api/v1/manager/static', express.static('static'));
 app.use('/api/static', express.static('static'));
 //Routes
 const router = require('./routes/routes');
 const userRoute = require('./routes/userRoute');
+const eventRoute = require('./routes/eventRoute');
 const { isAuthenticatedUser } = require('./middleware/auth.js');
 const jwt = require('jsonwebtoken');
+const eventModel = require('./models/eventModel.js');
+const userModel = require('./models/userModel.js');
 app.use('/api/v1', router);
 app.use('/api/v1', userRoute);
+app.use('/api/v1', eventRoute);
 app.use(errorMiddleware);
 
 
-app.get('/', isAuthenticatedUser, (req, res) => {
-    res.render('index', { userId: req.user?.id, token: req.token, freshDeals: [], electronicProducts: [], fashionProducts: [] });
+app.get('/', isAuthenticatedUser, catchAsyncErrors(async (req, res) => {
+    const sportsEvents = await eventModel.find({ category: 'Sports' });
+    res.render('index', { userId: req.user?.id, token: req.token, freshDeals: [], sportsEvents, fashionEvents: [] });
     // res.render('index', { userId: '1231235412', token: req.token });
-});
+}));
+app.post('/api/v1/makeManager/', catchAsyncErrors(async (req, res, next) => {
+    const verify = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
+    const user = await userModel.findById('64c357629558f8fa9d659257');
 
+    // user.roles.push('admin');
+    // user.roles.push('manager');//seller
+    // await user.save();
+    // await admin.save();
+    res.json({
+        // nhBits: user.length,
+        success: true,
+        user
+    });
+}));
 const start = async () => {
     try {
         connectDB(process.env.MONGO_URI);

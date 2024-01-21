@@ -1,0 +1,96 @@
+<div class="">
+    <div class="w-[100%] flex justify-between items-center m-auto">
+        <div class=" font-bold h-[7rem] py-4  text-start ">
+            <h1 class=" uppercase text-lg">Products </h1>
+            <p class="text-[#8e8c8c] text-lg">Manage your inventory here</p>
+        </div>
+        <a href="/api/v1/manager/event/create-event" class=" text-end mb-4"><button
+                class="hover:bg-[#5145ff] font-bold flex justify-center items-center text-sm  flex bg-[#453bdd] h-[2.5rem] w-[10rem] rounded-xl"><span><svg
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                    </svg>
+
+                </span>
+                <span class="pl-2">Create item</span></button></a href="/api/v1/manager/create-event">
+    </div>
+    <div class=" w-[100%] rounded-lg m-auto min-h-[40rem]  flex justify-center items-center mb-4">
+        <div id="inventory" class=" w-[100%] h-[100%]">
+            <div class=" headings flex items-center h-14">
+                <div class="header w-[5%]">Sr.No</div>
+                <div class="headers w-[50%] flex">
+                    <div class="w-[35%]">Product</div>
+                    <div class="w-[65%]">Name</div>
+                </div>
+                <div class="headers w-[9%]">Pricing</div>
+                <div class="headers w-[9%]">Sold</div>
+                <div class="headers w-[9%]">Rating</div>
+                <div class="headers w-[9%]">Reviews</div>
+                <div class="headers w-[9%]">Created</div>
+            </div>
+            <div class="tablebody flex items-center flex-col h-[37rem]">
+                <%if(allEvents){%>
+                    <%allEvents.forEach((event,i)=>{%>
+                        <a href="/api/v1/event/<%=event._id%>" target="_blank" rel="noreferer noopener" class="event">
+                            <div class="headers w-[5%] srNo">
+                                <%=i+1%>
+                            </div>
+                            <div class="headers w-[50%]">
+                                <div class="image w-[35%]">
+                                    <img src="../static/img/event-img/<%=event.images[0].url%>"
+                                        alt="<%=event.images[0].name%>">
+                                </div>
+                                <div class="eventname w-[65%]">
+                                    <p>
+                                        <%=event.name%>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="headers pricing w-[9%] font-bold">
+                                <%=event.price%>
+                            </div>
+                            <div class="headers sold w-[9%] font-bold">
+                                <%=event.sold%>
+                            </div>
+                            <div class="headers rating w-[9%]"><span class="font-bold">
+                                    <%=event.numOfReviews%>
+                                </span><span class="font-gray-400">/5</span></div>
+                            <div class="headers reviews w-[9%] font-bold">
+
+                                <%=event.reviews.length%>
+                            </div>
+                            <div class="headers created w-[9%]">
+                                <p>
+                                    <%=event.createdAt.toLocaleString().split(',')[0]%>
+                                </p>
+                                <div class="buttons">
+                                    <form action="/api/v1/manager/event/update-event/<%=event._id%>" method="get">
+                                        <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                class="editbtn  hover:stroke-2 w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                    <form action="/api/v1/manager/event/delete-event/<%=event._id%>" method="post">
+                                        <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                class="deleteBtn hover:stroke-2 w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </a>
+                        <%})%>
+                            <%}else{%>
+                                <p>There is no event in your inventory</p>
+                                <%}%>
+            </div>
+        </div>
+
+    </div>
+</div>

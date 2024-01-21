@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.headings div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    /* color: #5145ff;r44 */
+}
+
+.event {
+    /* background-color: green; */
+    min-height: 7rem;
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+}
+
+.event:hover {
+    background-color: #2e2e2e;
+    /* background-color: #393939; */
+    /* background-color: black; */
+}
+
+.event div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.headings div:nth-child(1) {
+    /* justify-content: start; */
+}
+
+/* .event div:nth-child(1) {
+    justify-content: start;
+
+} */
+
+.event .headers:nth-child(1) {}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.image img {
+    width: inherit;
+    height: inherit;
+    object-fit: contain;
+    /* mix-blend-mode: multiply; */
+
+}
+
+.eventname {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 10px;
+}
+
+.eventname p {
+    /* text-overflow: ellipsis; */
+    font-weight: bold;
+
+
+}
+
+
+.created div {
+    width: 70%;
+    display: none;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.buttons form {
+
+    height: 26px;
+    width: fit-content;
+}
+
+.buttons form:hover .buttons form button {
+    display: none;
+}
+
+#inventory {
+    /* overflow-y: scroll; */
+}

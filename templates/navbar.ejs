@@ -712,7 +712,8 @@
                             </div>
 
                             <a href="#"
-                                class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Talent Hunts</a>
+                                class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Talent
+                                Hunts</a>
 
                             <a href="#"
                                 class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Arts</a>
@@ -773,6 +774,12 @@
                                             <a href="#"
                                                 class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 block px-4 py-2 text-sm"
                                                 role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+                                            <a href="/api/v1/order/my-orders/<%=locals.userId%>"
+                                                class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 block px-4 py-2 text-sm"
+                                                role="menuitem" tabindex="-1" id="menu-item-2">My Orders</a>
+                                            <a href="/api/v1/manager/dashboard"
+                                                class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 block px-4 py-2 text-sm"
+                                                role="menuitem" tabindex="-1">Become an event manager</a>
                                             <form method="POST" action="/api/v1/auth/logout" role="none">
                                                 <button type="submit"
                                                     class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 block w-full px-4 py-2 text-left text-sm"
@@ -795,7 +802,7 @@
                         <!-- Cart -->
                         <div id="shopping-cart-btn" class=" ml-4 flow-root lg:ml-6 cursor-pointer items-center">
                             <button class="group -m-2 flex items-center p-2 w-fit" style="height: inherit;">
-                                
+
                                 <!-- <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>     -->
                                 <span class="sr-only">items in cart, view bag</span>
                             </button>
