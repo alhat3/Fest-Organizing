@@ -24,6 +24,11 @@ router.get('/manager/manage-event', isAuthenticatedUser, authorizeRoles('admin',
 router.get('/manager/dashboard', isAuthenticatedUser, authorizeRoles('admin', 'manager'), managerDashboardPage);
 router.get('/manager/orders', isAuthenticatedUser, authorizeRoles('admin', 'manager'), managerOrdersPage);
 router.get('/manager/event-reviews', isAuthenticatedUser, authorizeRoles('admin', 'manager'), managerReviewPage);
+//Order routes
+    
+
+
+
 //
 router.get('*', pageNotFound);
 module.exports = router;
