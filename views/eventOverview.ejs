@@ -118,7 +118,7 @@
                                             <p class="">(Entry Fee)</p>
 
                                             <!-- Reviews -->
-                                            <div class="mt-6">
+                                            <div class="mt-6 hidden">
                                                 <h3 class="sr-only">Reviews</h3>
                                                 <div class="flex items-center">
 
@@ -132,53 +132,63 @@
                                             </div>
 
                                             <!-- Colors -->
+                                            <div class="hidden">
+                                                <h3 class="text-sm font-medium text-gray-900">Color</h3>
 
 
-                                            <!-- Sizes -->
+                                                <!-- Sizes -->
+                                                <div class="mt-10 hidden">
+                                                    <div class="flex items-center justify-between">
+                                                        <h3 class="text-sm font-medium text-gray-900">Size</h3>
+                                                        <a href="#"
+                                                            class="text-sm font-medium text-indigo-600 hover:text-indigo-500">Size
+                                                            guide</a>
+                                                    </div>
 
-                                            <form action="/api/v1/order/<%=eventID%>/shipping" method="get">
-                                                <button type="submit"
-                                                    class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Register
-                                                    Now</button>
-                                            </form>
-                                            <form action="/api/v1/" method="post">
-                                                <button type="submit"
-                                                    class="mt-5 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                                    Watchlist </button>
-                                            </form>
-                                        </div>
+                                                    <form action="/api/v1/order/<%=eventID%>/shipping" method="get">
+                                                        <button type="submit"
+                                                            class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Register
+                                                            Now</button>
+                                                    </form>
+                                                    <form action="/api/v1/" method="post">
+                                                        <button type="submit"
+                                                            class="mt-5 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                            Watchlist </button>
+                                                    </form>
+                                                </div>
 
-                                        <div
-                                            class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">
-                                            <!-- Description and details -->
-                                            <div>
-                                                <h3 class="sr-only">Description</h3>
+                                                <div
+                                                    class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">
+                                                    <!-- Description and details -->
+                                                    <div>
+                                                        <h3 class="sr-only">Description</h3>
 
-                                                <div class="space-y-6">
-                                                    <p id="description" class="text-base text-gray-900 ">
-                                                        <!-- <%=event.description%> -->
-                                                    </p>
+                                                        <div class="space-y-6">
+                                                            <p id="description" class="text-base text-gray-900 ">
+                                                                <!-- <%=event.description%> -->
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <%if(event.moreInfo){%>
+                                                        <div class="mt-10">
+                                                            <h3 class="text-sm font-medium text-gray-900">Highlights
+                                                            </h3>
+
+                                                            <div class="mt-4">
+                                                                <%=event.moreInfo?.aboutEvent%>
+                                                            </div>
+                                                        </div>
+                                                        <%}%>
                                                 </div>
                                             </div>
-                                            <%if(event.moreInfo){%>
-                                                <div class="mt-10">
-                                                    <h3 class="text-sm font-medium text-gray-900">Highlights</h3>
-
-                                                    <div class="mt-4">
-                                                        <%=event.moreInfo?.aboutEvent%>
-                                                    </div>
-                                                </div>
-                                                <%}%>
                                         </div>
                                     </div>
-                        </div>
-                    </div>
-                    <section class="hidden features">
-                        <!-- <%- include('../templates/eventFeatures.ejs')%> -->
-                    </section>
-                    <section class="reviewSection" id="reviewSection">
-                        <!-- <%- include('../templates/reviews.ejs')%> -->
-                    </section>
+                                    <section class="hidden features">
+                                        <!-- <%- include('../templates/eventFeatures.ejs')%> -->
+                                    </section>
+                                    <section class="reviewSection" id="reviewSection">
+                                        <!-- <%- include('../templates/reviews.ejs')%> -->
+                                    </section>
                 </main>
                 <hr>
                 <%- include('../templates/footer2.ejs')%>

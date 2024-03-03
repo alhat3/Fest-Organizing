@@ -95,7 +95,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
         otpArr = verificationCode.toString().split('');
     }
     // const resetPasswordUrl = `${req.protocol}://${req.get('host')}/api/v1/auth/reset-password/${resetToken}`;
-    const message = `Please use the verification code below on verify page.\n\n ${verificationCode} \n\n if you have not requested then please ignore.`;
+    const message = `Please use the verification code below on verify page.\n\n  ${verificationCode} \n\n  If you have not requested then please ignore.`;
     let email_name = recoveryEmail.split('@');
     let arr = [];
     email_name[0].split('').forEach((char, i) => {
@@ -114,7 +114,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     sendCookie('verifyOtp', token, 120000, res);
     await sendEmail({
         email: recoveryEmail,
-        subject: 'Ecommerce Password Recovery',
+        subject: 'Fest Organising password recovery',
         message
     });
     res.render('form', { layout: 'layouts/formLayout', formType: 'verifyOtp', verificationType: 'email', email, emailArr, resend });
