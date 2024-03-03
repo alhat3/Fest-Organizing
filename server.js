@@ -32,6 +32,7 @@ app.use('/api/static', express.static('static'));
 const router = require('./routes/routes');
 const userRoute = require('./routes/userRoute');
 const eventRoute = require('./routes/eventRoute');
+const orderRoute = require('./routes/orderRoute');
 const { isAuthenticatedUser } = require('./middleware/auth.js');
 const jwt = require('jsonwebtoken');
 const eventModel = require('./models/eventModel.js');
@@ -39,6 +40,7 @@ const userModel = require('./models/userModel.js');
 app.use('/api/v1', router);
 app.use('/api/v1', userRoute);
 app.use('/api/v1', eventRoute);
+app.use('/api/v1', orderRoute);
 app.use(errorMiddleware);
 
 
@@ -49,11 +51,12 @@ app.get('/', isAuthenticatedUser, catchAsyncErrors(async (req, res) => {
 }));
 app.post('/api/v1/makeManager/', catchAsyncErrors(async (req, res, next) => {
     const verify = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-    const user = await userModel.findById('64c357629558f8fa9d659257');
+    const user = await userModel.findById('651ad1024974c91d04fe2364');
 
-    // user.roles.push('admin');
+    user.roles.push('admin');
     // user.roles.push('manager');//seller
-    // await user.save();
+    await user.save();
+
     // await admin.save();
     res.json({
         // nhBits: user.length,

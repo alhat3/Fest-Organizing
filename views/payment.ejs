@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="../../static/css/payment.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        .chek::selection {
+            /* color: red; */
+            /* background-color: green; */
+        }
+    </style>
+    <meta http-equiv="Content-Security-Policy" content="
+  default-src *; 
+  style-src 'self'  'unsafe-inline'; 
+  script-src * 'self' https://checkout.stripe.com 'unsafe-inline'; 
+  img-src http://127.0.0.1:5080/api/v1/static/img/ ;
+  connect-src  * 'self' https://checkout.stripe.com   ;
+  frame-src  * 'self'  https://checkout.stripe.com ;">
+</head>
+
+<body>
+    <div id="backcard" class="">
+    </div>
+
+    <section class="w-[80%] h-[38rem]  mx-auto flex justify-center">
+        <div class=" w-[50%] h-[100%]   justify-center items-center hidden">
+            <div class="flip-box mx-auto w-[500px] h-[300px] ">
+                <div class="flip-box-inner ">
+                    <div class="flip-box-front">
+                        <div id="card-number"
+                            class="cursor-pointer bg-green-500 text-white flex justify-between mx-auto w-[75%]">
+                            <input type="number" value="" id="firstFour" readonly>
+                            <input type="number" value="" id="secondFour" readonly>
+                            <input type="number" value="" id="thirdFour" readonly>
+                            <input type="number" value="" id="fourthFour" readonly>
+
+                        </div>
+                        <p id="card-holder-name" class="cursor-pointer uppercase text-white text-start"></p>
+                        <div id="expiry-date" class="cursor-pointer flex justify-between ">
+                            <p id="expiry-month" class="cursor-pointer uppercase text-white"></p>
+                            <p id="expiry-year" class="cursor-pointer uppercase text-white"></p>
+
+                        </div>
+
+                    </div>
+                    <div class="flip-box-back">
+                        <input type="text" id="cvv_num" readonly>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <form action="/api/v1/order/<%=events%>/payment" method="post" id=""
+            class=" pl-8 pr-16  w-[50%] h-full grid grid-cols-2 grid-rows-5 hidden ">
+            <div class=" col-span-2 flex  items-center">
+                <h1 class="text-3xl chek font-semibold">Payment Details</h1>
+            </div>
+            <div class=" col-span-2 flex flex-col justify-center ">
+                <label for="cardholder_name" class="w-fit">Name on Card</label>
+                <input type="text" name="cardholder_name" maxlength="24" class="uppercase" id="cardholder_name">
+            </div>
+            <div class=" col-span-2 flex flex-col justify-center ">
+                <label for="card_number" class="w-fit">Card Number</label>
+                <input type="number" name="card_number" id="card_number">
+            </div>
+            <div class=" mr-auto w-[90%] flex flex-col justify-center">
+                <label for="expiry_month" class="w-fit">Valid Through</label>
+                <div class="w-[100%] flex border-b-2 border-gray-500  focus:border-blue">
+                    <input type="number" name="expiry_month" id="expiry_month"
+                        class="focus:border-none focus:outline-none pb-3"><span class="text-gray-600 text-3xl ">/</span>
+                    <input type="number" name="expiry_year" id="expiry_year"
+                        class="focus:border-none focus:outline-none pb-3">
+                </div>
+            </div>
+            <div class=" ml-auto w-[90%] flex flex-col justify-center ">
+                <label for="cvv" class="w-fit">CVV</label>
+                <input type="number" name="cvc" id="cvv">
+            </div>
+            <div class=" col-span-2 flex justify-center items-center" id="paymentDiv">
+                <button type="submit" id="payBtn"> PAY ₹10000.00</button>
+            </div>
+        </form>
+        <form id="payment-form" action="#" class="pl-8 pr-16  w-[50%] h-full flex items-center justify-center flex-col">
+            <!-- <div id="link-authentication-element">
+                </div> -->
+            <div id="payment-element" class="w-[80%] mb-8">
+            </div>
+            <button id="submit" type="submit">
+                <div class="spinner hidden" id="spinner"></div>
+                <span id="button-text">Pay now</span>
+            </button>
+            <div id="payment-message" class="hidden"></div>
+        </form>
+    </section>
+
+</body>
+<script src="../../static/script/payment.js"></script>
+
+
+</html>

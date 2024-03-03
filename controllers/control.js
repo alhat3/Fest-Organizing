@@ -130,7 +130,6 @@ exports.updateEventPage = catchAsyncErrors(async (req, res, next) => {
     const user = await userModel.findById(verify.id);
     const event = await eventModel.findById(req.params.id);
     res.render('dashboard', { layout: 'layouts/dashboardLayouts', role: 'manager', user, event, content: 'updateEvent' });
-
 });
 exports.managerEventManagePage = catchAsyncErrors(async (req, res, next) => {
     const verify = jwt.verify(req.token, process.env.JWT_SECRET);
@@ -164,11 +163,11 @@ exports.managerReviewPage = catchAsyncErrors(async (req, res, next) => {
     });
     res.render('dashboard', { layout: 'layouts/dashboardLayouts', Data, role: 'manager', user, content: 'eventReviews' });
 });
-exports.shippingPage = catchAsyncErrors(async (req, res) => {
-
+exports.basicDetailsPage = catchAsyncErrors(async (req, res) => {
     if (req.token) {
-        console.log(req.user);
-        return res.render('shipping', { layout: 'shipping', events: req.params.id, user: req.user, page: 'shipping' });
+        // console.log(req.user);
+        const event = await eventModel.findById(req.params.id);
+        return res.render('basicDetails', { layout: 'basicDetails', event, user: req.user, page: 'shipping' });
     } else {
         return res.redirect('/api/v1/auth/login');
     }
@@ -209,8 +208,8 @@ exports.confirmOrderPage = catchAsyncErrors(async (req, res, next) => {
         });
 });
 exports.paymentPage = catchAsyncErrors(async (req, res, next) => {
-    if (!req.cookies.confirmOrder) {
-        return res.redirect(`/api/v1/order/${req.params.id}/confirm-order`);
+    if (!req.cookies.orderDetails) {
+        return res.redirect(`/api/v1/order/${req.params.id}/shipping`);
     }
     // const decodedData = jwt.verify(req.cookies.confirmOrder, process.env.JWT_SECRET);
     // res.json({ decodedData });

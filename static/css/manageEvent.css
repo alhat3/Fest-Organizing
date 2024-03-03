@@ -94,3 +94,22 @@
 #inventory {
     /* overflow-y: scroll; */
 }
+
+.tablebody {
+    overflow-y: scroll;
+}
+
+.tablebody::-webkit-scrollbar {
+    background-color: transparent;
+    /* height: .6vw; */
+    width: .6vw;
+}
+
+.tablebody::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+
+}
+
+.tablebody:hover::-webkit-scrollbar-thumb {
+    background-color: rgb(206, 203, 203);
+}

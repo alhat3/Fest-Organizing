@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        form div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* width: 100%; */
+            flex-direction: column;
+        }
+
+        form div div {
+            width: 100%;
+        }
+
+        form div div label {
+            width: 100%;
+            margin-left: .5vw;
+        }
+
+        form div input {
+            height: 2.5rem;
+            border-radius: 6px;
+            padding: 0 .5rem;
+            /* border: none; */
+            width: 100%;
+            border: 2px solid #e7e7e9;
+        }
+
+        form div input:focus {
+            outline-color: blue;
+        }
+
+        #event:focus {
+            outline-color: #e7e7e9;
+        }
+
+        #entry_fee:focus {
+            outline-color: #e7e7e9;
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* input[type="number"] {
+            -moz-appearance: textfield;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- <%- include('../templates/progressBar.ejs')%> -->
+    <div class="mx-auto text-center w-[15rem] flex justify-between flex-col text-[1.7rem] mb-4 h-[3rem] ">
+        <h1>Basic details</h1>
+        <hr>
+    </div>
+    <section
+        class="my-10 mx-auto h-[40rem] bg-[#f9fafb] w-[40rem] border-[#e7e7e9] border-2 rounded-lg flex justify-center items-center">
+        <form method="post" class="w-[85%] h-[90%] grid grid-cols-2 grid-rows-7"
+            action="/api/v1/order/<%=event.id%>/shipping">
+            <div class="col-span-2">
+                <div>
+                    <label for="name">Name</label>
+                </div>
+                <input type="text" name="name" id="name" class="focus:outline-none" value="<%=user.username%>">
+            </div>
+            <div class="col-span-2">
+                <div>
+                    <label for="email">Email </label>
+                </div>
+                <input type="email" id="email" name="email" value="<%=user.email%>" class=" w-[100%] ">
+                <!-- cursor-not-allowed text-gray-500 focus:outline-none -->
+            </div>
+            <!-- <div class="col-span-2">
+                <div>
+                    <label for="address">Address</label>
+                </div>
+                <input type="text" name="address" id="address" class="h-16">
+            </div> -->
+            <div>
+                <div class="w-[90%] mr-auto">
+                    <label for="event">Event</label>
+                </div>
+                <input type="text" readonly name="event" value="<%=event.name%>" id="event"
+                    class="text-gray-500 cursor-not-allowed w-[90%] mr-auto ">
+            </div>
+            <div>
+                <div class="w-[90%] ml-auto">
+                    <label for="entry_fee">Entry fee (Rs)</label>
+                </div>
+                <input type="number" name="entry_fee" readonly value="<%=event.price%>" id="entry_fee"
+                    class="text-gray-500 cursor-not-allowed w-[90%] ml-auto">
+            </div>
+            <!-- <div class="">
+                <div class="w-[90%] mr-auto">
+                    <label for="state">State / Province</label>
+                </div>
+                <input type="text" name="state" id="state" class="w-[90%] mr-auto">
+
+            </div> -->
+            <!-- <div class="">
+                <div class="w-[90%] ml-auto">
+                    <label for="country">Country</label>
+                </div>
+                <input readonly type="text" name="country" id="country" value="India"
+                    class="cursor-not-allowed text-gray-500 focus:outline-none  w-[90%] ml-auto">
+            </div> -->
+            <div class="col-span-2">
+                <div>
+                    <label for="phone_number">Phone Number</label>
+                </div>
+                <input type="number" id="phone_number" name="phone_number" class=" w-[100%] ">
+                <!-- cursor-not-allowed text-gray-500 focus:outline-none -->
+            </div>
+            <div class="flex justify-center items-center col-span-2">
+
+                <button type="submit"
+                    class="cursor-pointer w-[50%] h-[3rem] bg-[#4f46e5] text-white rounded-lg text-lg hover:bg-[#3830bb] transition-all duration-75 ease-linear">Continue</button>
+            </div>
+        </form>
+    </section>
+    <script>
+        let input = document.querySelectorAll('input[type="number"]');
+        input.forEach((input) => {
+            input.addEventListener('keydown', (e) => {
+                if (e.keyCode === 38) {
+                    console.log('up');
+                    e.preventDefault();
+                } else if (e.keyCode === 40) {
+                    console.log('down');
+                    e.preventDefault();
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>
