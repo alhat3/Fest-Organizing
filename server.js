@@ -45,12 +45,12 @@ app.use(errorMiddleware);
 
 
 app.get('/', isAuthenticatedUser, catchAsyncErrors(async (req, res) => {
-    const sportsEvents = await eventModel.find({ category: 'Sports' });
-    const artsEvents = await eventModel.find({category:'Arts'})
-    const talentEvents = await eventModel.find({category:'Talent Hunt'})
-    const hackathonEvents = await eventModel.find({category:'Hackathon'})
-    console.log(artsEvents)
-    res.render('index', { userId: req.user?.id, token: req.token, artsEvents, sportsEvents, talentEvents,hackathonEvents });
+    const sportsEvents = await eventModel.find({ category: 'sports' });
+    const artsEvents = await eventModel.find({ category: 'arts' });
+    const talentEvents = await eventModel.find({ category: 'talent-hunt' });
+    const hackathonEvents = await eventModel.find({ category: 'hackathon' });
+    console.log(artsEvents);
+    res.render('index', { userId: req.user?.id, token: req.token, artsEvents, sportsEvents, talentEvents, hackathonEvents });
     // res.render('index', { userId: '1231235412', token: req.token });
 }));
 app.post('/api/v1/makeManager/', catchAsyncErrors(async (req, res, next) => {

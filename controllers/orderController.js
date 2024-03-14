@@ -8,11 +8,11 @@ const jwt = require('jsonwebtoken');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 require('dotenv').config();
 exports.createPaymentIntent = catchAsyncErrors(async (req, res, next) => {
-    const orderDetails = jwt.verify(req.cookies.orderDetails, process.env.JWT_SECRET);
-
-    if (!orderDetails) {
-        return next(ErrorHandler('Confirm order Session Expired!'));
-    }
+    // const orderDetails = jwt.verify(req.cookies.orderDetails, process.env.JWT_SECRET);
+    // console.log('Yooo');
+    // if (!orderDetails) {
+    //     return next(new ErrorHandler('Confirm order Session Expired!'));
+    // }
     // let amount = confirmOrder.totalPrice * 100;
     let amount = 100; // paise
     console.log(amount);
@@ -20,14 +20,23 @@ exports.createPaymentIntent = catchAsyncErrors(async (req, res, next) => {
     const paymentIntent = await stripe.paymentIntents.create({
         amount,// paise
         currency: "inr",
-        automatic_payment_methods: {
-            enabled: true,
-        },
+        payment_method_types: ['card'],
     });
+
     return res.json({
         clientSecret: paymentIntent.client_secret,
-        emailAddress: req.user.recoveryEmail || 'mdehteshamshaikh1@gmail.com'
+        emailAddress: req.user.recoveryEmail || 'mdehteshamshaikh1@gmail.com',
+        id: paymentIntent.id
     });
+});
+exports.confirmPaymentIntent = catchAsyncErrors(async (req, res, next) => {
+    const paymentIntent = await stripe.paymentIntents.confirm(
+        'pi_3MtweELkdIwHu7ix0Dt0gF2H',
+        {
+            payment_method: 'pm_card_visa',
+            return_url: 'https://www.example.com',
+        }
+    );
 });
 exports.createOrder = catchAsyncErrors(async (req, res, next) => {
     console.log('aaya');

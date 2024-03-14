@@ -91,7 +91,8 @@
                             <!-- <h2 class="text-2xl font-bold text-gray-900">Collections</h2> -->
 
                             <div class="mt-6   grid grid-cols-4 gap-x-[4.5rem]  space-y-0">
-                                <div class="group relative eventBox" id="sportsBox">
+                                <a href="/api/v1/eventList/sports" target="_blank" class="group relative eventBox"
+                                    id="sportsBox">
                                     <div
                                         class="relative h-80 w-full overflow-hidden rounded-lg bg-white lg:aspect-w-1 lg:aspect-h-1">
                                         <img src="../static/img/sports1.jpg" alt=" Desk with leather desk pad, walnut desk organizer, wireless keyboard
@@ -105,8 +106,9 @@
                                         </p>
                                     </h3>
                                     <p class="text-base font-semibold text-gray-900">Sports </p>
-                                </div>
-                                <div class="group relative eventBox" id="artsBox">
+                                </a>
+                                <a href="/api/v1/eventList/hackathon" target="_blank" class="group relative eventBox"
+                                    id="artsBox">
                                     <div
                                         class="relative h-80 w-full overflow-hidden rounded-lg bg-white lg:aspect-w-1 lg:aspect-h-1">
                                         <img src="../static/img/hackathon.jpg"
@@ -120,9 +122,10 @@
                                         </p>
                                     </h3>
                                     <p class="text-base font-semibold text-gray-900">Hackathon</p>
-                                </div>
+                                </a>
 
-                                <div class="group relative eventBox" id="talentHuntBox">
+                                <a href="/api/v1/eventList/talent-hunt" target="_blank" class="group relative eventBox"
+                                    id="talentHuntBox">
                                     <div
                                         class="relative h-80 w-full overflow-hidden rounded-lg bg-white   lg:aspect-w-1 lg:aspect-h-1">
                                         <img src="../static/img/talenthunt.jpg"
@@ -136,9 +139,10 @@
                                         </p>
                                     </h3>
                                     <p class="text-base font-semibold text-gray-900">Talent Hunt</p>
-                                </div>
+                                </a>
 
-                                <div class="group relative eventBox" id="hackathonBox">
+                                <a href="/api/v1/eventList/arts" target="_blank" class="group relative eventBox"
+                                    id="hackathonBox">
                                     <div
                                         class="relative h-80 w-full overflow-hidden rounded-lg bg-white   lg:aspect-w-1 lg:aspect-h-1">
                                         <img src="../static/img/arts.jpg"
@@ -152,7 +156,7 @@
                                         </p>
                                     </h3>
                                     <p class="text-base font-semibold text-gray-900">Arts</p>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -171,8 +175,8 @@
                             <%artsEvents.forEach((event,i)=>{%>
                                 <%if(i<16){%>
                                     <%if(i===0){%>
-                                        <a href="/api/v1/event/<%=event.id%>" target="_blank"
-                                            rel="noreferer noopener" class="inline-block pr-3">
+                                        <a href="/api/v1/event/<%=event.id%>" target="_blank" rel="noreferer noopener"
+                                            class="inline-block pr-3">
                                             <div
                                                 class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                                 <img src="./static/img/event-img/<%=event.images[0].url%>"
@@ -193,7 +197,7 @@
                                             <%}%>
                                                 <%}%>
                                                     <%})%>
-                            <!-- <div class="inline-block px-3">
+                                                        <!-- <div class="inline-block px-3">
                                 <div
                                     class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                     <img src="../static/img/cricket-logo.avif"
@@ -246,8 +250,8 @@
                             <%talentEvents.forEach((event,i)=>{%>
                                 <%if(i<16){%>
                                     <%if(i===0){%>
-                                        <a href="/api/v1/event/<%=event.id%>" target="_blank"
-                                            rel="noreferer noopener" class="inline-block pr-3">
+                                        <a href="/api/v1/event/<%=event.id%>" target="_blank" rel="noreferer noopener"
+                                            class="inline-block pr-3">
                                             <div
                                                 class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                                 <img src="./static/img/event-img/<%=event.images[0].url%>"
@@ -269,7 +273,7 @@
                                                 <%}%>
                                                     <%})%>
 
-                            <!-- <div class="inline-block px-3">
+                                                        <!-- <div class="inline-block px-3">
                                 <div
                                     class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                     <img src="../static/img/cricket-logo.avif"
@@ -321,8 +325,8 @@
                             <%hackathonEvents.forEach((event,i)=>{%>
                                 <%if(i<16){%>
                                     <%if(i===0){%>
-                                        <a href="/api/v1/event/<%=event.id%>" target="_blank"
-                                            rel="noreferer noopener" class="inline-block pr-3">
+                                        <a href="/api/v1/event/<%=event.id%>" target="_blank" rel="noreferer noopener"
+                                            class="inline-block pr-3">
                                             <div
                                                 class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                                 <img src="./static/img/event-img/<%=event.images[0].url%>"
@@ -343,7 +347,7 @@
                                             <%}%>
                                                 <%}%>
                                                     <%})%>
-                            <!-- <div class="inline-block px-3">
+                                                        <!-- <div class="inline-block px-3">
                                 <div
                                     class="w-[17vw] h-[17vw] max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                     <img src="../static/img/cricket-logo.avif"

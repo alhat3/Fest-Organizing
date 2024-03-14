@@ -3,7 +3,9 @@ const catchAsyncErrors = require('../middleware/catchAsyncErrors');
 const userModel = require("../models/userModel");
 const eventModel = require("../models/eventModel");
 const jwt = require('jsonwebtoken');
+
 require('dotenv').config();
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 //GET
 exports.loginPage = catchAsyncErrors(
     async (req, res, next) => {
@@ -219,10 +221,14 @@ exports.paymentSuccessfulPage = catchAsyncErrors(async (req, res, next) => {
     if (!req.cookies.confirmOrder) {
         return next(ErrorHandler('Cookie Expired!'));
     }
-    const confirmOrder = jwt.verify(req.cookies.confirmOrder, process.env.JWT_SECRET);
-    console.log(confirmOrder.totalPrice);
-    console.log('Working');
-    return res.render('paymentSuccessfulPage', { layout: 'paymentSuccessfulPage', totalPrice: confirmOrder.totalPrice, });
+    // const confirmOrder = jwt.verify(req.cookies.confirmOrder, process.env.JWT_SECRET);
+    const paymentIntent = await stripe.paymentIntents.confirm(req.params.id);
+    console.log("Confirmation", paymentIntent);
+    // return res.render('paymentSuccessfulPage', { layout: 'paymentSuccessfulPage', totalPrice: confirmOrder.totalPrice, });
+    return res.json({
+        success: true,
+        paymentIntent
+    });
 });
 exports.orderpage = catchAsyncErrors(async (req, res, next) => {
     if (req.token) {
@@ -233,6 +239,10 @@ exports.orderpage = catchAsyncErrors(async (req, res, next) => {
     }
 });
 
+exports.eventListPage = catchAsyncErrors(async (req, res) => {
+    const events = await eventModel.find({ category: req.params.id });
+    res.render('eventList', { layout: 'layouts/eventListLayout', data: events });
+});
 
 
 exports.pageNotFound = catchAsyncErrors(async (req, res) => {

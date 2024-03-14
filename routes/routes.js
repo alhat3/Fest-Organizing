@@ -1,5 +1,5 @@
 const express = require('express');
-const { loginPage, signUpPage, forgotPage, recoveryEmailPage, createPasswordPage, eventOverviewPage, categoryPage, adminDashboardPage, shoppingCartPage, verifyEmailPage, verifyNumberPage, verifyOtpPage, verifyOtp, pageNotFound, createEventPage, managerDashboardPage, managerOrdersPage, managerEventManagePage, managerReviewPage, updateEventPage, basicDetailsPage, confirmOrderPage, paymentPage, orderpage } = require('../controllers/control.js');
+const { loginPage, signUpPage, forgotPage, recoveryEmailPage, createPasswordPage, eventOverviewPage, categoryPage, adminDashboardPage, shoppingCartPage, verifyEmailPage, verifyNumberPage, verifyOtpPage, verifyOtp, pageNotFound, createEventPage, managerDashboardPage, managerOrdersPage, managerEventManagePage, managerReviewPage, updateEventPage, basicDetailsPage, confirmOrderPage, paymentPage, orderpage, eventListPage, paymentSuccessfulPage } = require('../controllers/control.js');
 const router = express.Router();
 // const { getAllEvents } = require('../controllers/eventController');
 const { isAuthenticatedUser, authorizeRoles } = require('../middleware/auth.js');
@@ -17,10 +17,11 @@ router.get('/auth/create-password', createPasswordPage);
 router.get('/auth/recovery-email', recoveryEmailPage);
 //Event orders
 router.get('/event/:id', isAuthenticatedUser, eventOverviewPage);
+router.get('/eventList/:id', isAuthenticatedUser, eventListPage);
 router.get('/order/:id/shipping', isAuthenticatedUser, basicDetailsPage);
 // router.get('/order/:id/confirm-order', isAuthenticatedUser, confirmOrderPage);
 router.get('/order/:id/payment', isAuthenticatedUser, paymentPage);
-// router.get('/order/payment-successful', isAuthenticatedUser, paymentSuccessfulPage);
+router.get('/order/payment-successful/:id', isAuthenticatedUser, paymentSuccessfulPage);
 // router.get('/order/my-orders/:id', isAuthenticatedUser, orderpage);
 // router.get('/category', categoryPage);
 //Event manager routs
@@ -32,7 +33,7 @@ router.get('/manager/dashboard', isAuthenticatedUser, authorizeRoles('admin', 'm
 router.get('/manager/orders', isAuthenticatedUser, authorizeRoles('admin', 'manager'), managerOrdersPage);
 router.get('/manager/event-reviews', isAuthenticatedUser, authorizeRoles('admin', 'manager'), managerReviewPage);
 //Order routes
-    
+
 
 
 
