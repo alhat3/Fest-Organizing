@@ -86,21 +86,17 @@
                                 <!-- <input type="text" class="" name="event_category" id="event_category" placeholder="Choose Category"> -->
                                 <select name="event_category" id="event_category" required style="color: black;">
                                     <option value="Choose Category">Choose Category</option>
-                                    <option value="Fashion" <%=event.category==='Fashion' ? 'selected' :'' %>
-                                        >Fashion
+                            
+                                    <option value="hackathon" <%=event.category==='hackathon' ? 'selected' :'' %>
+                                        >Hackathon
                                     </option>
-                                    <option value="Electronics" <%=event.category==='Electronics' ? 'selected' :'' %>
-                                        >Electronics
-                                    </option>
-                                    <option value="Food and beverages" <%=event.category==='Food and beverages'
-                                        ? 'selected' :'' %>>Food and beverages</option>
+                                    <option value="talent-hunt" <%=event.category==='talent-hunt'
+                                        ? 'selected' :'' %>>Talent-Hunt</option>
                                     <option value="Sports" <%=event.category==='Sports' ? 'selected' :'' %>>Sports
                                     </option>
-                                    <option value="Health and Wellness" <%=event.category==='Health and Wellness'
-                                        ? 'selected' :'' %>>Health and Wellness</option>
-                                    <option value="Children's Goods" <%=event.category==="Children's Goods" ? 'selected'
-                                        :'' %>
-                                        >Children's Goods</option>
+                                    <option value="arts" <%=event.category==='arts'
+                                        ? 'selected' :'' %>>Arts</option>
+                                    
                                     <option value="Others" <%=event.category==='Others' ? 'selected' :'' %>>Others
                                     </option>
                                 </select>

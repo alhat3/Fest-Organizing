@@ -215,6 +215,7 @@ exports.paymentPage = catchAsyncErrors(async (req, res, next) => {
     }
     // const decodedData = jwt.verify(req.cookies.confirmOrder, process.env.JWT_SECRET);
     // res.json({ decodedData });
+
     return res.render('payment', { layout: 'payment', events: req.params.id, user: req.user, page: 'payment' });
 });
 exports.paymentSuccessfulPage = catchAsyncErrors(async (req, res, next) => {
@@ -240,6 +241,7 @@ exports.orderpage = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.eventListPage = catchAsyncErrors(async (req, res) => {
+    console.log(req.params.id)
     const events = await eventModel.find({ category: req.params.id });
     res.render('eventList', { layout: 'layouts/eventListLayout', data: events });
 });

@@ -312,6 +312,7 @@ async function initialize() {
     });
     const { clientSecret, email, id } = await response.json();
     emailAddress = email;
+    
     if (!clientSecret) {
         return window.location.replace("http://127.0.0.1:5000");
     }

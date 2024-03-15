@@ -25,7 +25,7 @@ exports.createPaymentIntent = catchAsyncErrors(async (req, res, next) => {
 
     return res.json({
         clientSecret: paymentIntent.client_secret,
-        emailAddress: req.user.recoveryEmail || 'mdehteshamshaikh1@gmail.com',
+        emailAddress: req.user.recoveryEmail || 'allhhatt03@gmail.com',
         id: paymentIntent.id
     });
 });
